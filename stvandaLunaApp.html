@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--
+        Code taken from ESRI's ArcGIS Maps SDK for Javascript Tutorial "Display a Map" and "Display a popup"
+        https://developers.arcgis.com/javascript/latest/display-a-map/
+        https://developers.arcgis.com/javascript/latest/display-a-pop-up/
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <!-- reference the API for CSS and javascript libraries-->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.25/"></script>
+
+    <!-- add AMD modules for map and mapview. -->
+    <script>
+      require(["esri/config", "esri/Map", "esri/views/MapView"], function(esriConfig, Map, MapView) {
+
+        // Add the generated API key so the map is accessible
+        esriConfig.apiKey = "AAPKe9df7e488c254286ae96f1c60635b111JckENR7h9iliNC1B-K4y1qJ4vgUP5BRVakHavX_xw6AM26StriR1eX6PP-Y6zUAh";
+
+        //create the map and set basemap
+        const map = new Map({
+          basemap: "arcgis-topographic" // Basemap layer service
+
+      });
+      // create the mapview
+      const view = new MapView({
+          map: map,
+          center: [-118.805, 34.027], // Longitude, latitude
+          zoom: 13, // Zoom level
+          container: "viewDiv" // Div element
+        });
+    });
+    </script>
+
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
